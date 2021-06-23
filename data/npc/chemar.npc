@@ -1,0 +1,65 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# chemar.npc: Datenbank f�r den Teppichpiloten Chemar in Darashia
+
+Name = "Chemar"
+Outfit = (130,95-3-14-76)
+Home = [33270,32439,6]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",!         -> "Ah, the wind brings in another visitor. Feel welcome %N."
+ADDRESS,"hi$",!            -> *
+ADDRESS,!                  -> Idle
+BUSY,"hello$",!            -> "%N! Be calm as the eye of the storm, and your patience will be rewarded.", Queue
+BUSY,"hi$",!               -> *
+BUSY,!                     -> NOP
+VANISH,!                   -> "Daraman's blessings!"
+
+"bye"             -> "Daraman's blessings!", Idle
+"name"            -> "My name is Chemar Ibn Kalith."
+"job"             -> "I am a licensed carpetpilot and responsible for the Darashian airmail. I can bring you to the Femor Hills, Edron, or you can buy letters and parcels."
+"time"            -> "It's %T, precisely."
+"caliph"          -> "The caliph depends heavily on his carpetfleet for commerce and for war alike."
+"kazzan"          -> *
+"daraman"         -> "The prophet of our people; praised be his name."
+"ferumbras"       -> "This scourge of the west may have connections to the evil soils in Drefia."
+"drefia"          -> "In the west a big city existed. Its people were corrupted and drew the wrath of the djinn upon them and Drefia was destroyed." 
+"excalibug"       -> "I have been almost everywhere in the world and think it's only a myth."
+"thais"           -> "I think it's a rolemodel for what befalls people if they forget the teachings of Daraman."
+"carlin"          -> "That city is getting noisier and more crowded each month."
+"news"            -> "Our carpetpilots bring in too many news to recall them all."
+"rumour"          -> *
+"rumor"           -> *
+"flying","carpet" -> "Do you want to buy a flying carpet for 5000 platinum coins?", Price=500000, Topic=7
+
+"passage"   -> "I can fly you to Femor Hills or Edron if you like. Where do you want to go?"
+"fly"       -> *
+"go"        -> *
+"transport" -> *
+"ride"      -> *
+"trip"      -> *
+"tibia"     -> *
+
+"femur"     -> "Are you sure that you are not talking about the FEMOR Hills?"
+"hill"      -> Price=60, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=4
+"femor"     -> *
+"edron"     -> Price=40, "Do you want to get a ride to Edron for %P gold?", Topic=5
+
+"hill",QuestValue(250)>2      -> Price=50, "Do you want to get a ride to the Femor Hills for %P gold?", Topic=4
+"femor",QuestValue(250)>2     -> *
+"edron",QuestValue(250)>2     -> Price=30, "Do you want to get a ride to Edron for %P gold?", Topic=5
+
+@"gen-post.ndb"
+
+Topic=4,"yes",CountMoney>=Price -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(32535,31837,4), EffectOpp(11)
+Topic=4,"yes"                   -> "You don't have enough money."
+Topic=4                         -> "You shouldn't miss the experience."
+
+Topic=5,"yes",CountMoney>=Price -> "Hold on!", DeleteMoney, Idle, EffectOpp(11), Teleport(33193,31784,3), EffectOpp(11)
+Topic=5,"yes"                   -> "You don't have enough money."
+Topic=5                         -> "You shouldn't miss the experience."
+
+Topic=7,"yes",CountMoney>=Price -> "Oh, I am sorry, but you have no pilot licence."
+Topic=7,"yes"                   -> "You don't own enough worldly wealth to afford this item."
+Topic=7                         -> "Maybe another day then, my friend."
+}
