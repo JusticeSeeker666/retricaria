@@ -5,6 +5,12 @@ Retricaria is a 7.7 clone project that has been in development for a long time, 
   - Formulas, monsters behavior, the map, everything!
   - Contain a lot of fixes from the main nostalscam repository
 
+# Recommended OTClient
+If you're planning to start a serious project, you may need an stable and optimized client:
+  - https://github.com/JusticeSeeker666/retricaria-otclient
+
+This otclient project contains a lot of good features as (CAM, DLL detection and much much more).
+
 # Credits
 
   - OTLand community for making this project real
