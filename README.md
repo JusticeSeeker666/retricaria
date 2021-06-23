@@ -8,7 +8,3 @@ Retricaria is a 7.7 clone project that has been in development for a long time, 
 # Credits
 
   - OTLand community for making this project real
-
-# Advice
-
-  - Don't buy anything from Ezzz/Twistedscorpio and support the free software! Avoid supporting scammers.
